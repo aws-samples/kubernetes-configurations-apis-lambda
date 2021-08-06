@@ -1,0 +1,95 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AccountPermissions",
+            "Effect": "Allow",
+            "Action": [
+                "ecr:GetAuthorizationToken",
+                "ecr:PutRegistryPolicy",
+                "ecr:PutReplicationConfiguration",
+                "lambda:ListFunctions",
+                "lambda:ListEventSourceMappings",
+                "lambda:GetAccountSettings",
+                "lambda:ListLayers",
+                "lambda:ListLayerVersions",
+                "lambda:ListCodeSigningConfigs"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "ECRSpecific",
+            "Effect": "Allow",
+            "Action": [
+                "ecr:PutLifecyclePolicy",
+                "ecr:PutImageTagMutability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:ListTagsForResource",
+                "ecr:UploadLayerPart",
+                "ecr:BatchDeleteImage",
+                "ecr:ListImages",
+                "ecr:PutImage",
+                "ecr:UntagResource",
+                "ecr:BatchGetImage",
+                "ecr:CompleteLayerUpload",
+                "ecr:DescribeImages",
+                "ecr:TagResource",
+                "ecr:DescribeRepositories",
+                "ecr:StartLifecyclePolicyPreview",
+                "ecr:InitiateLayerUpload",
+                "ecr:DeleteRepositoryPolicy",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:ReplicateImage",
+                "ecr:GetRepositoryPolicy",
+                "ecr:GetLifecyclePolicy"
+            ],
+            "Resource": "arn:aws:ecr:*:<ACCOUNT-ID>:repository/*"
+        },
+        {
+            "Sid": "LambdaLayerSpecific",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:GetLayerVersion",
+                "lambda:GetLayerVersionPolicy",
+                "lambda:GetProvisionedConcurrencyConfig",
+                "lambda:DeleteLayerVersion",
+                "lambda:GetEventSourceMapping",
+                "lambda:ListFunctionsByCodeSigningConfig",
+                "lambda:GetCodeSigningConfig"
+            ],
+            "Resource": [
+                "arn:aws:lambda:*::function:*:*",
+                "arn:aws:lambda:*:<ACCOUNT-ID>:event-source-mapping:*",
+                "arn:aws:lambda:*:<ACCOUNT-ID>:layer:*:*"
+            ]
+        },
+        {
+            "Sid": "LambdaSpecific",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:InvokeFunction",
+                "lambda:ListVersionsByFunction",
+                "lambda:GetFunction",
+                "lambda:ListAliases",
+                "lambda:PublishLayerVersion",
+                "lambda:UpdateFunctionConfiguration",
+                "lambda:GetFunctionConfiguration",
+                "lambda:GetFunctionCodeSigningConfig",
+                "lambda:UpdateFunctionCode",
+                "lambda:ListFunctionEventInvokeConfigs",
+                "lambda:ListProvisionedConcurrencyConfigs",
+                "lambda:GetFunctionConcurrency",
+                "lambda:ListTags",
+                "lambda:GetFunctionEventInvokeConfig",
+                "lambda:DeleteFunction",
+                "lambda:PublishVersion",
+                "lambda:GetAlias",
+                "lambda:GetPolicy"
+            ],
+            "Resource": [
+                "arn:aws:lambda:*:<ACCOUNT-ID>:layer:*",
+                "arn:aws:lambda:*:<ACCOUNT-ID>:function:*"
+            ]
+        }
+    ]
+}

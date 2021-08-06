@@ -1,0 +1,17 @@
+{
+  "RequestType" : "Create",
+  "LogicalResourceId" : "EKSIdentityMapping",
+  "ResourceProperties" : {
+    "ClusterName": "<CLUSTER-NAME>",
+    "RoleMappings": [
+      {
+        "arn": "<ROLE-TO-ADD>",
+        "username": "system:node:{{EC2PrivateDNSName}}",
+        "groups": [
+          "system:bootstrappers",
+          "system:nodes"
+        ]
+      }
+    ]
+  }
+}
