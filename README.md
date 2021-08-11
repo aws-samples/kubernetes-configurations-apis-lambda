@@ -6,7 +6,6 @@ http://aws.amazon.com/agreement or other written agreement between Customer
 and either Amazon Web Services, Inc. or Amazon Web Services
 EMEA SARL or both.*
 
-
 # Simplifying Kubernetes configurations using AWS Lambda
 
 Creating a serverless model for updating Elastic Kubernetes Clusters (EKS)
