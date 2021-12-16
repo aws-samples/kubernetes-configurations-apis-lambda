@@ -19,6 +19,7 @@ import logging
 import os
 import subprocess
 import jinja2
+from jinja2 import select_autoescape
 import sys
 
 
@@ -28,7 +29,9 @@ logger.setLevel(logging.INFO)
 
 # Jinja configs
 templateLoader = jinja2.FileSystemLoader(searchpath="./")
-templateEnv = jinja2.Environment(loader=templateLoader, trim_blocks=True)
+templateEnv = jinja2.Environment(autoescape=select_autoescape(default_for_string=True, default=True),
+    loader=templateLoader,
+    trim_blocks=True)
 
 
 def get_stdout(output):
